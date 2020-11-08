@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Cookie clicker</title>
+  </head>
+  <body>
+
+    <header>
+      <h1>Cookie Clicker!!!</h1>
+    </header>
+
+    <div>
+      <progress id="cookies-win-progress" value="0" max="10"></progress>
+      <p id="progress-label">10</p>
+    </div>
+
+    <div class="main-webiste">
+      <div id=cookie-gui-wrapper>
+        <h3 id="cookies" class="cookies">Cookies: 0</h3>
+        <h5 id="cookies-per-second">Per second: 0</h5>
+        <h6 id="cookies-until-prestige">Next prestige in 1000000 cookies</h6>
+        <h6 id="cookies-until-win">You win in 1SEPT cookies</h6>
+        <br>
+
+        <button id="cookie"><img onclick="add_cookie()" id="cookie-image" src="assets/cookie.png" alt=""></button>
+
+        <br>
+
+        <div id="prestige-wrapper" class="prestige-wrapper">
+          <button onclick="prestige()" id="prestige-button">PRESTIGE</button>
+          <p id="prestige-paragraph">You have reached 1 000 000 cookies<br>you can prestige for $1 000 000 to get double cookies</p>
+        </div>
+
+        <br>
+
+        <div id="upgrades-wrapper">
+          <p id="upgrade-unlock-label">Upgraades are unlocked in prestige 3</p>
+        </div>
+
+        <div id="upgrade-unlocked-wrapper">
+          <p>UPGRADES:</p>
+
+          <p id="cookie-upgrade-level">Cookie upgrade level: 0</p>
+          <button onclick="upgrade()" id="upgrade-cookie">Upgraade for $1000</button>
+
+          <br>
+          <br>
+
+          <p id="cost-reduce-level">Reduce utility costs</p>
+          <button onclick="upgrade()" id="upgrade-cost-reduce">Purchase for $5000</button>
+
+          <br>
+          <br>
+
+          <p id="upgrade-reduce-level">Reduce upgrade costs</p>
+          <button onclick="upgrade()" id="upgrade-reduce">Purchase for $10 000</button>
+
+          <p id="purchase-failed">Not enough cookies!</p>
+        </div>
+
+        <div class="load-save">
+          <button id="load" onclick="load()">Load</button>
+          <button id="save" onclick="save()">Save</button>
+
+          <div id="load-sec">
+            <p>Enter load string:</p>
+            <label>
+              <input type="text" id="load-input">
+            </label>
+
+            <p id="load-warning">WARNING: Loading in a string will overwrite the current game</p>
+
+            <button id="confirm" onclick="confirm_load()">Confirm</button>
+            <button id="cancel" onclick="cancel_load()">Cancel</button>
+
+            <p id="load-error">Error while loading; Did you copy the right code?</p>
+          </div>
+
+          <div id="save-sec">
+            <p>Copy this string to the clipboard, save this somewhere safe <br>
+            I know it's easy to edit, but trust me, cheating is not fun! <br>
+            Hover over it and triple-click to select everything</p>
+            <div id="text-area">
+              <p id="text">Generating...</p>
+            </div>
+
+            <button id="close" onclick="close_save_menu()">Close</button>
+          </div>
+        </div>
+      </div>
+      
+      
+      <aside>
+        <h3>SHOP</h3>
+
+        <div class="generators">
+          <div class="show-item">
+            <button onclick="add_generator()" id="cursor">Cursor</button>
+            <button id="cursor-max" onclick="buy_max()">Buy maximum</button>
+            <h6 id="cursor-count">Amount: 0</h6>
+            <p id="cursor-cost">Cost: 10</p>
+          </div>
+
+          <div class="show-item">
+            <button onclick="add_generator()" id="grandma">Grandma</button>
+            <button id="grandma-max" onclick="buy_max()">Buy maximum</button>
+            <h6 id="grandma-count">Amount: 0</h6>
+            <p id="grandma-cost">Cost: 100</p>
+          </div>
+
+          <div class="show-item">
+            <button onclick="add_generator()" id="factory">Factory</button>
+            <button id="factory-max" onclick="buy_max()">Buy maximum</button>
+            <h6 id="factory-count">Amount: 0</h6>
+            <p id="factory-cost">Cost: 500</p>
+          </div>
+
+          <div class="show-item">
+            <button onclick="add_generator()" id="network">Network of Factories</button>
+            <button id="network-max" onclick="buy_max()">Buy maximum</button>
+            <h6 id="network-count">Amount: 0</h6>
+            <p id="network-cost">Cost: 2000</p>
+          </div>
+
+          <div class="show-item">
+            <button onclick="add_generator()" id="cookiestash">Cookie Stash</button>
+            <button id="cookiestash-max" onclick="buy_max()">Buy maximum</button>
+            <h6 id="cookiestash-count">Amount: 0</h6>
+            <p id="cookiestash-cost">Cost: 10 000</p>
+          </div>
+
+          <div class="show-item">
+            <button onclick="add_generator()" id="cookiedupe">Cookie Duplicator</button>
+            <button id="cookiedupe-max" onclick="buy_max()">Buy maximum</button>
+            <h6 id="cookiedupe-count">Amount: 0</h6>
+            <p id="cookiedupe-cost">Cost: 30 000</p>
+          </div>
+
+          <div class="show-item">
+            <button onclick="add_generator()" id="timemachine">Time machine</button>
+            <button id="timemachine-max" onclick="buy_max()">Buy maximum</button>
+            <h6 id="timemachine-count">Amount: 0</h6>
+            <p id="timemachine-cost">Cost: 300 000</p>
+          </div>
+
+          <div class="show-item">
+            <button onclick="add_generator()" id="cookieguy">The cookie guy</button>
+            <button id="cookieguy-max" onclick="buy_max()">Buy maximum</button>
+            <h6 id="cookieguy-count">Amount: 0</h6>
+            <p id="cookieguy-cost">Cost: 1 000 000</p>
+          </div>
+
+          <div class="show-item">
+            <button onclick="add_generator()" id="timemachinefactory">Time machine factory</button>
+            <button id="timemachinefactory-max" onclick="buy_max()">Buy maximum</button>
+            <h6 id="timemachinefactory-count">Amount: 0</h6>
+            <p id="timemachinefactory-cost">Cost: 5 000 000</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+    
+
+    <!-- Optional JavaScript -->
+    <script src="main.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+  <noscript>
+    <h1>It seems that you dont have JS enabled, this game requires JS to function properly</h1>
+  </noscript>
+</html>

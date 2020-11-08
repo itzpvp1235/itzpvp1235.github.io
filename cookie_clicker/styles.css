@@ -1,0 +1,135 @@
+body {
+    background: #eeeeee;
+}
+
+#load-input {
+    padding: 0 0;
+    width: 500px;
+}
+
+#load-warning {
+    color: red;
+}
+
+#text-area {
+    transition: 100ms;
+    width: 20pc;
+    height: 50px;
+    word-wrap: break-word;
+    overflow: hidden;
+    padding: 20px 20px;
+}
+
+#text-area:hover {
+    height: 400px;
+    overflow: visible;
+}
+
+#save-sec {
+    display: none;
+}
+
+#load-sec {
+    display: none;
+}
+
+#load-error {
+    display: none;
+}
+
+#cookies-win-progress {
+    width: 100%;
+    height: 2em;
+    transition: 30ms;
+}
+
+#progress-label {
+    text-align: right;
+    padding-right: 10px;
+    transition: 30ms;
+}
+
+.main-webiste {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cookies_until_prestige {
+    padding-left: 5px;
+    padding-top: 2px;
+    color: #000000;
+}
+
+#cookie {
+    border-style: none;
+}
+
+#cookie-image {
+    height: 100px;
+    width: 100px;
+    transition: 300ms;
+}
+
+#cookie-image:hover {
+    height: 260px;
+    width: 260px;
+}
+
+#cookies_until_prestige-per-second {
+    color: #555;
+}
+
+.generators {
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    height: 300px;
+    width: 200px;
+    transition: 450ms;
+}
+
+.generators:hover {
+    height: 500px;
+    width: 400px;
+}
+
+aside {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 500px;
+}
+
+.show-item button {
+    transition: 250ms;
+    border: none;
+    position: relative;
+    right: 10px;
+}
+
+.show-item button:hover {
+    color: #ccc;
+}
+
+.prestige-wrapper {
+    display: none;
+}
+
+#purchase-failed {
+    display: none;
+    color: red;
+}
+
+#upgrade-unlocked-wrapper {
+    width: 100px;
+    height: 40px;
+    transition: 450ms;
+    overflow: hidden;
+}
+
+#upgrade-unlocked-wrapper:hover {
+    width: 400px;
+    height: 200px;
+    overflow: scroll;
+}

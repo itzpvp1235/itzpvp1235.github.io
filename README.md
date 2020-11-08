@@ -1,16 +1,23 @@
-### Hi there 👋
+# yay
+yay yay yay yay
 
-<!--
-**itzpvp1235/itzpvp1235** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+yay yay yay yay yay
+i like this thing website type thing
+tat is really fun and all taht fun things
+this is my life and braincells are being
+lost because i dont even kn0w
 
-Here are some ideas to get you started:
+y are you readking this stuff
+you could be doing things that are so much better than this
+like seriously, please stop reading
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+why are yu still reading this
+well then, i guess you can read my faq
+
+FAQ:
+
+1: Why am I wasting time typing this:
+Because I am bored
+
+2: Why did i make this crappy website:
+Because I AM BORED
