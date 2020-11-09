@@ -1,0 +1,30 @@
+<!DOCTYPE: html>
+<html>
+	<head>
+		<title?This weird thing!! :) </title>
+		<script defer>
+const button = document.getElementById("yay")
+const clickDisplay = document.getElementById("button-display")
+let clicks = 1
+
+function clicked() {
+	clicks = clicks * 1.5
+	clicks = Math.round(clicks)
+	document.getElementById("button-display").innerHTML = `clicks: ${clicks}`
+}
+		</script>
+		
+		<style>
+		#title-text {
+			font-family: calibri;
+		}
+		</style>
+	</head>
+	<body>
+		<h1 id="title-text">click game yay</h1>
+		<br>
+		<h2 id="button-display">Clicks: 0</h2>
+		<button onclick="clicked()" id="yay">click me</button>
+		
+	</body>
+</html>
