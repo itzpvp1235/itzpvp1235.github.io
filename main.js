@@ -4,9 +4,14 @@ const search_form = document.getElementById("search-form")
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 const search_table = document.getElementById("search-result-table")
+const search_header = document.getElementById("search-header")
 
 search_form.addEventListener("submit", e => {
     e.preventDefault()
+
+    search_header.innerHTML = "Searching..."
+
+    search_table.style.display = "block"
 
     const search_query = searchbar.value
     search_table.innerHTML = "<tr>\n" +
@@ -18,14 +23,42 @@ search_form.addEventListener("submit", e => {
         "                        <th class='items-desc'>Description</th>\n" +
         "                    </tr>"
 
+    let matches = 0
+    let already_on_list = []
+
     // the search
     Array.prototype.forEach.call(items, item => {
+        console.log(item.parentElement.parentElement.children[5].innerHTML.toUpperCase())
         if (item.innerHTML.toUpperCase().includes(search_query.toUpperCase())) {
+            already_on_list.push(item)
             const clone = item.parentElement.parentElement.cloneNode(true)
             clone.children[0].children[0].classList.remove("list-item")
             search_table.appendChild(clone)
+
+            matches++
         }
     });
+
+    Array.prototype.forEach.call(items, item => {
+        console.log(item.parentElement.parentElement.children[5].innerHTML.toUpperCase())
+        if (item.parentElement.parentElement.children[5].innerHTML.toUpperCase().includes(search_query.toUpperCase())) {
+            if (!(already_on_list.includes(item))) {
+                const clone = item.parentElement.parentElement.cloneNode(true)
+                clone.children[0].children[0].classList.remove("list-item")
+                search_table.appendChild(clone)
+
+                matches++
+            }
+        }
+    });
+
+
+    search_header.innerHTML = "Search Results (" +  matches + " Results)"
+
+    if (matches === 0) {
+        search_table.style.display = "none"
+        search_header.innerHTML = "No results were found"
+    }
 })
 
 var item_names = []
