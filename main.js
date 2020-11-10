@@ -1,3 +1,5 @@
+const last_date_check = "2020/11/11"
+
 const searchbar = document.getElementById("search")
 const items = document.getElementsByClassName("list-item")
 const search_form = document.getElementById("search-form")
@@ -58,7 +60,7 @@ search_form.addEventListener("submit", e => {
 
         Array.prototype.forEach.call(search_items, item => {
             item.addEventListener("click", e => {
-                if (e.target.getAttribute("href").includes("scratch.mit.edu")) {
+                if (e.target.innerHTML.includes("(External)")) {
                     site = e.target.getAttribute("href")
                     document.getElementById("site-domain").innerHTML = "You are about to be redirected to " + site
                     e.preventDefault()
@@ -80,7 +82,7 @@ search_form.addEventListener("submit", e => {
 var item_names = []
 Array.prototype.forEach.call(items, item => {
     item.addEventListener("click", e => {
-        if (e.target.getAttribute("href").includes("scratch.mit.edu")) {
+        if (e.target.innerText.includes("(External)")) {
             site = e.target.getAttribute("href")
             document.getElementById("site-domain").innerHTML = "You are about to be redirected to " + site
             e.preventDefault()
