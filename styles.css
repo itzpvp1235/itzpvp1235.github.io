@@ -16,6 +16,8 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+#warning-external {z-index: 2;}
+
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;

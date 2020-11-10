@@ -2,9 +2,13 @@ const searchbar = document.getElementById("search")
 const items = document.getElementsByClassName("list-item")
 const search_form = document.getElementById("search-form")
 const modal = document.getElementById("myModal");
+const modal_warn = document.getElementById("warning-external")
+const span_warn = document.getElementsByClassName("close")[1];
 const span = document.getElementsByClassName("close")[0];
 const search_table = document.getElementById("search-result-table")
 const search_header = document.getElementById("search-header")
+const search_items = document.getElementsByClassName("search-item")
+var site = null
 
 search_form.addEventListener("submit", e => {
     e.preventDefault()
@@ -28,11 +32,12 @@ search_form.addEventListener("submit", e => {
 
     // the search
     Array.prototype.forEach.call(items, item => {
-        console.log(item.parentElement.parentElement.children[5].innerHTML.toUpperCase())
         if (item.innerHTML.toUpperCase().includes(search_query.toUpperCase())) {
             already_on_list.push(item)
             const clone = item.parentElement.parentElement.cloneNode(true)
             clone.children[0].children[0].classList.remove("list-item")
+            clone.children[0].children[0].classList.add("search-item")
+
             search_table.appendChild(clone)
 
             matches++
@@ -40,16 +45,27 @@ search_form.addEventListener("submit", e => {
     });
 
     Array.prototype.forEach.call(items, item => {
-        console.log(item.parentElement.parentElement.children[5].innerHTML.toUpperCase())
         if (item.parentElement.parentElement.children[5].innerHTML.toUpperCase().includes(search_query.toUpperCase())) {
             if (!(already_on_list.includes(item))) {
                 const clone = item.parentElement.parentElement.cloneNode(true)
                 clone.children[0].children[0].classList.remove("list-item")
+                clone.children[0].children[0].classList.add("search-item")
                 search_table.appendChild(clone)
 
                 matches++
             }
         }
+
+        Array.prototype.forEach.call(search_items, item => {
+            item.addEventListener("click", e => {
+                if (e.target.getAttribute("href").includes("scratch.mit.edu")) {
+                    site = e.target.getAttribute("href")
+                    document.getElementById("site-domain").innerHTML = "You are about to be redirected to " + site
+                    e.preventDefault()
+                    modal_warn.style.display = "block";
+                }
+            })
+        })
     });
 
 
@@ -63,9 +79,20 @@ search_form.addEventListener("submit", e => {
 
 var item_names = []
 Array.prototype.forEach.call(items, item => {
+    item.addEventListener("click", e => {
+        if (e.target.getAttribute("href").includes("scratch.mit.edu")) {
+            site = e.target.getAttribute("href")
+            document.getElementById("site-domain").innerHTML = "You are about to be redirected to " + site
+            e.preventDefault()
+            modal_warn.style.display = "block";
+        }
+    })
     item_names.push(item.innerHTML)
 });
-console.log(item_names)
+
+document.getElementById("ok-button").addEventListener("click", e => {
+    window.location.href = site;
+})
 
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
@@ -180,7 +207,19 @@ span.onclick = function() {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
+// When the user clicks on <span> (x), close the modal
+span_warn.onclick = function() {
+    modal_warn.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal_warn) {
         modal.style.display = "none";
     }
 }
