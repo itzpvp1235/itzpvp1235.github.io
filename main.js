@@ -1,5 +1,3 @@
-const last_date_check = "2020/11/11"
-
 const searchbar = document.getElementById("search")
 const items = document.getElementsByClassName("list-item")
 const search_form = document.getElementById("search-form")
